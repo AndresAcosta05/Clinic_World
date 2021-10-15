@@ -38,3 +38,8 @@ h2, h3 {
     align-items: center;
     justify-content: center;
 }
+
+.video {
+    display: flex;
+    justify-content: center;
+}
