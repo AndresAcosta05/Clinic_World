@@ -1,0 +1,26 @@
+h2, h3 {
+    text-align: center;
+    
+}
+
+img {
+    max-width: 100%;
+}
+.contenedor {
+    width: min(90%, 1200px);
+    margin: 0 auto;
+}
+
+.entradas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 50px;
+    margin-bottom: 10px;
+}
+.entrada_imagen {
+
+}
+.entrada_contenido {
+    border: 1px solid rgba(104, 104, 255, 0.301);
+    padding: 20px;
+}
