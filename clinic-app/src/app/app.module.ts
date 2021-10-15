@@ -1,32 +1,35 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NosotrosComponent } from './pages/nosotros/nosotros.component';
-import { ContactenosComponent } from './pages/contactenos/contactenos.component';
-import { InicioComponent } from './pages/inicio/inicio.component';
-import { NavegacionComponent } from './pages/components/navegacion/navegacion.component';
-import { HeaderComponent } from './pages/components/header/header.component';
-import { FooterComponent } from './pages/components/footer/footer.component';
-import { BlogComponent } from './pages/blog/blog.component';
+import { LayoutComponent } from './pages/layout/layout.component';
+import { HeaderComponent } from './pages/layout/components/header/header.component';
+import { FooterComponent } from './pages/layout/components/footer/footer.component';
+
+// Service
+import { TokenInterceptorService } from "./core/services/token-interceptors.service";
 
 @NgModule({
   declarations: [
     AppComponent,
-    NosotrosComponent,
-    ContactenosComponent,
-    InicioComponent,
-    NavegacionComponent,
+    LayoutComponent,
     HeaderComponent,
     FooterComponent,
-    BlogComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
