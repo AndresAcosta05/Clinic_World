@@ -27,3 +27,55 @@
     margin-top: 90px;
   }
 }
+
+p,
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+.contenedor {
+  width: min(90%, 1200px);
+  margin: 0 auto;
+}
+.barra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+}
+.navegacion {
+  display: flex;
+  gap: 20px;
+}
+.logo {
+  font-size: 50px;
+  font-family: "PT Sans", sans-serif;
+  color: white;
+  font-weight: 300;
+}
+
+.logo span {
+  font-weight: 400;
+}
+
+.enlace {
+  color: white;
+  font-size: 18px;
+}
+/*Space to Medias*/
+/*Tablet*/
+@media (max-width: 768px) {
+  .barra,
+  .navegacion {
+    flex-direction: column;
+    text-align: center;
+  }
+  .navegacion {
+    margin-top: 20px;
+  }
+}
