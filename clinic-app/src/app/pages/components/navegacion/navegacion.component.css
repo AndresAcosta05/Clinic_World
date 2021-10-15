@@ -1,7 +1,9 @@
 p, h1, h2, h3, h4 {
     margin: 0;
 }
-
+a {
+    text-decoration: none;
+}
 .contenedor {
     width: min(90%, 1200px);
     margin: 0 auto;
@@ -29,7 +31,6 @@ p, h1, h2, h3, h4 {
 
 .enlace {
     color: white;
-    text-decoration: none;
     font-size: 18px;
 }
 /*Space to Medias*/
