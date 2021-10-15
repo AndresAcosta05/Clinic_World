@@ -43,3 +43,9 @@ h2, h3 {
     display: flex;
     justify-content: center;
 }
+
+@media (max-width: 768px){
+    .servicios {
+        grid-template-columns: 1fr;
+    }
+}
