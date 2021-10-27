@@ -17,10 +17,7 @@ img {
     column-gap: 50px;
     margin-bottom: 10px;
 }
-.entrada_imagen {
-
-}
-.entrada_contenido {
-    border: 1px solid rgba(104, 104, 255, 0.301);
-    padding: 20px;
+.entrada {
+    border: 3px solid rgba(157, 157, 160, 0.301);
+    padding: 10px;
 }

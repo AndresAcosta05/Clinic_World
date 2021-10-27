@@ -20,10 +20,15 @@ h3 {
 .servicios {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  column-gap: 30px;
 }
 .servicio h3 {
   color: rgb(104, 104, 255);
   text-transform: uppercase;
+}
+
+.servicio {
+  text-align: justify;
 }
 .informacion_servicio {
   display: flex;
