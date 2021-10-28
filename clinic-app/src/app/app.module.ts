@@ -11,6 +11,8 @@ import { FooterComponent } from './pages/layout/components/footer/footer.compone
 // Service
 import { TokenInterceptorService } from "./core/services/token-interceptors.service";
 import { NavegacionComponent } from './pages/layout/components/navegacion/navegacion.component';
+import { MedicosComponent } from './pages/medicos/medicos.component';
+import { CitasComponent } from './pages/citas/citas.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { NavegacionComponent } from './pages/layout/components/navegacion/navega
     HeaderComponent,
     FooterComponent,
     NavegacionComponent,
+    MedicosComponent,
+    CitasComponent,
   ],
   imports: [
     BrowserModule,

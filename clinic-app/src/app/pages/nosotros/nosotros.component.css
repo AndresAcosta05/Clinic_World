@@ -48,6 +48,11 @@ img {
   margin: 20px auto;
   border-radius: 20px;
 }
+.mapa {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
 
 @media (max-width: 768px) {
   .contenido {
