@@ -12,33 +12,37 @@ export class MedicosComponent implements OnInit {
   myform: FormGroup
   id_editar: number = 0;
 
-  constructor(private _builder: FormBuilder, private medico: MedicosService) {
-    this.myform = this._builder.group({
-      tipoid: ['', [Validators.required, Validators.minLength(10)]],
-      numid: ['', [Validators.required, Validators.minLength(100)]],
-      edad: ['', [Validators.required, Validators.minLength(100)]],
-      prinombre: ['', [Validators.required, Validators.minLength(100)]],
-      priapellido: ['', [Validators.required, Validators.minLength(100)]],
-      segapellido: ['', [Validators.required, Validators.minLength(100)]],
-      correo: ['', [Validators.required, Validators.minLength(100)]],
-      contrase: ['', [Validators.required, Validators.minLength(100)]]
+  constructor(private _builder:FormBuilder,private medico:MedicosService) { 
+    this.myform=this._builder.group({
+      tipoid: ['',[Validators.required,Validators.minLength(10)]],
+      numid: ['',[Validators.required,Validators.minLength(100)]],
+      edad: ['',[Validators.required,Validators.minLength(100)]],
+      prinombre: ['',[Validators.required,Validators.minLength(100)]],
+      segnombre: ['',[Validators.required,Validators.minLength(100)]],
+      priapellido: ['',[Validators.required,Validators.minLength(100)]],
+      segapellido: ['',[Validators.required,Validators.minLength(100)]],
+      direccion: ['',[Validators.required,Validators.minLength(100)]],
+     telefono: ['',[Validators.required,Validators.minLength(100)]],
+      correo: ['',[Validators.required,Validators.minLength(100)]],
+      usuario: ['',[Validators.required,Validators.minLength(100)]],
+      contrase: ['',[Validators.required,Validators.minLength(100)]]
 
     })
   }
   lista_medico: any;
   nuevocon = {
     tipoid: null,
-    numid: null,
-    edad: null,
-    prinombre: null,
-    segnombre: null,
-    priapellido: null,
-    segapellido: null,
-    direccion: null,
-    telefono: null,
-    usuario: null,
-    correo: null,
-    contrase: null
+      numid:null,
+      edad: null,
+      prinombre: null,
+      segnombre:null,
+      priapellido:null,
+      segapellido: null,
+      direccion:null,
+      telefono:null,
+      correo:null, 
+      usuario:null,
+      contrase:null
 
   }
   ////// cuando carga el componente se activa ngonInit y llama el metodo  recuperartodos
@@ -62,12 +66,12 @@ export class MedicosComponent implements OnInit {
       segnombre: value,
       priapellido: value.priapellido,
       segapellido: value.segapellido,
-      direccion: null,
-      telefono: null,
-      usuario: value.usuario,
-      correo: value.correo,
-      contrase: value.contrase
-
+      direccion:value.direccion,
+      telefono:value.telefono,
+      correo:value.correo, 
+      usuario:value.usuario,
+      contrase:value.contrase
+     
     }
     this.medico.alta(this.nuevocon).subscribe(datos => {
       console.log(datos)
@@ -101,11 +105,11 @@ export class MedicosComponent implements OnInit {
       segnombre: value,
       priapellido: value.priapellido,
       segapellido: value.segapellido,
-      direccion: null,
-      telefono: null,
-      usuario: value.usuario,
-      correo: value.correo,
-      contrase: value.contrase
+      direccion:null,
+      telefono:null,
+      correo:value.correo, 
+      usuario:value.usuario,
+      contrase:value.contrase
     }
     this.medico.modificacion(this.nuevocon, this.id_editar).subscribe(datos => {
       console.log(datos)
@@ -116,21 +120,23 @@ export class MedicosComponent implements OnInit {
   }
 
   //este metodo carga los datos de la fila al formulario
-  seleccionar(con_edi: any) {
-    this.id_editar = con_edi['id'];
-    this.myform.setValue({
-      tipoid: con_edi['tipoid'],
-      numid: con_edi['numid'],
-      edad: con_edi['edad'],
-      prinombre: con_edi['prinombre'],
-      segnombre: con_edi['segnombre'],
-      priapellido: con_edi['priapellido'],
-      segapellido: con_edi['segapellido'],
-      direccion: con_edi['direccion'],
-      telefono: con_edi['telefono'],
-      usuario: con_edi['usuario'],
-      correo: con_edi['correo'],
-      contrase: con_edi['contraseña']
-    });
+  seleccionar(con_edi:any) {
+   this.id_editar=con_edi['id'];
+   this.myform.setValue({
+    tipoid: con_edi['tipoid'],
+    numid:con_edi['numid'],
+    edad: con_edi['edad'],
+    prinombre: con_edi['prinombre'],
+    segnombre:con_edi['segnombre'],
+    priapellido:con_edi['priapellido'],
+    segapellido: con_edi['segapellido'],
+    direccion:con_edi['direccion'],
+    telefono:con_edi['telefono'],
+   
+    correo:con_edi['correo'], 
+    usuario:con_edi['usuario'],
+    contrase:con_edi['contraseña']
+  
+  })
   }
 }
