@@ -1,6 +1,4 @@
-html {
-    box-sizing: border-box;
-}
+
 *, *::after, *::before {
     box-sizing: inherit;
 }
@@ -36,19 +34,7 @@ h1, h2, h3, h4 {
     text-transform: uppercase;
 }
 /*Interfaz*/
-.header {
-   
-    max-height: 250px;
-    background-position: center center;
-    /*Flex para centrado*/
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.header_texto {
-    font-size: 110px;
-    color: white;
-}
+
 .contenido-principal {
     margin-top: 20px;
     height: 90px;
