@@ -1,68 +1,96 @@
 <main class="contenedor">
-    <h2>Contactenos</h2>
-    <div class="imagen_contacto"></div>
-    <form class="formulario">
-        <fieldset>
-            <legend>LLene el Formulario de Registro</legend>
-            <div class="informacion">
-                <div class="campos">
-                    <label for="tipo_documento">Tipo de Documento: </label>
-                    <select name="" id="">
-                        <option value="" selected disabled>-- Seleccionar --</option>
-                        <option value="">CC</option>
-                        <option value="">TI</option>
-                    </select>
-                </div>
-                <!--Campo-->
-                <div class="campos">
-                    <label for="documento">Documento: </label>
-                    <input type="text" name="documento" placeholder="# Documento">
-                </div>
-                <!--Campo-->
-                <div class="campos">
-                    <label for="nombre">Nombre: </label>
-                    <input type="text" name="nombre" placeholder="Tu Nombre">
-                </div>
-                <!--Campo-->
-                <div class="campos">
-                    <label for="segundo_nombre">Segundo Nombre: </label>
-                    <input type="text" name="segundo_nombre" placeholder="Tu Segundo Nombre">
-                </div>
-                <!--Campo-->
-                <div class="campos">
-                    <label for="apellido">Apellido: </label>
-                    <input type="text" name="apellido" placeholder="Tu Apellido">
-                </div>
-                <!--Campo-->
-                <div class="campos">
-                    <label for="segundo_apellido">Segundo Apellido: </label>
-                    <input type="text" name="segundo_apellido" placeholder="Tu Segundo Apellido">
-                </div>
-                <!--Campo-->
-                <div class="campos">
-                    <label for="edad">Edad: </label>
-                    <input type="text" name="edad" placeholder="Tu Edad">
-                </div>
-                <!--Campo-->
-                <div class="campos">
-                    <label for="direccion">Direccion: </label>
-                    <input type="text" name="direccion" placeholder="Tu Direccion">
-                </div>
-                <!--Campo-->
-                <div class="campos">
-                    <label for="telefono">Telefono: </label>
-                    <input type="text" name="telefono" placeholder="Tu Telefono">
-                </div>
-                <!--Campo-->
-                <div class="campos">
-                    <label for="correo">Correo: </label>
-                    <input type="text" name="correo" placeholder="Tu Correo">
-                </div>
-                <!--Campo-->
-                <div class="campos flex-end">
-                    <a href="" class="boton">Registrarme</a>
-                </div>
-            </div>
-        </fieldset>
-    </form>
+    <div class="d-flex justify-content-center align-items-center flex-column pt-5 superior">
+        <!--Parte Superior titulo y añadir-->
+        <h1 class="titulo">Clientes</h1>
+        <button type="button" id="btnAgregar" data-bs-toggle="modal" data-bs-target="#modalAgregar"
+            class="btn btn-success boton-add d-flex justify-content-center align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg"
+                viewBox="0 0 16 16">
+                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z" />
+            </svg>
+        </button>
+    </div>
+    <div class="contenido-principal table-responsive-xl">
+        <table class="table table-bordered border-primary">
+            <thead>
+                <tr>
+                    <td class="text-center">Tipo Doc.</td>
+                    <td class="text-center">Numero</td>
+                    <td class="text-center">Nombres</td>
+                    <td class="text-center">Apellidos</td>
+                    <td class="text-center">Edad</td>
+                    <td class="text-center">Direccion</td>
+                    <td class="text-center">Telefono</td>
+                    <td class="text-center">Correo</td>
+                </tr>
+            </thead>
+            <tbody class="cuerpoTabla">
+
+            </tbody>
+        </table>
+    </div>
 </main>
+<!-- Modal -->
+<div class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agendar una Cita</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Tipo Documento:</span>
+                        <select name="" id="" class="form-control">
+                            <option value="" disabled selected>--Seleccionar--</option>
+                            <option value="">TI</option>
+                            <option value="">CC</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Documento:</span>
+                         <input type="text" class="form-control" placeholder="Numero Documento"  aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Nombre</span>
+                         <input type="text" class="form-control" placeholder="Nombre"  aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Segundo Nombre:</span>
+                         <input type="text" class="form-control" placeholder="Segundo Nombre"  aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Apellido:</span>
+                         <input type="text" class="form-control" placeholder="Apellido"  aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Segundo Apellido:</span>
+                         <input type="text" class="form-control" placeholder="Segundo Apellido"  aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Edad:</span>
+                         <input type="number" class="form-control" placeholder="Edad"  aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Direccion:</span>
+                         <input type="text" class="form-control" placeholder="Direccion"  aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Correo:</span>
+                         <input type="text" class="form-control" placeholder="Correo"  aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Telefono:</span>
+                         <input type="text" class="form-control" placeholder="Telefono"  aria-describedby="basic-addon1">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" id="btnGuardar">Guardar</button>
+                <button type="button" class="btn btn-primary" id="btnActualizar">Actualizar</button>
+            </div>
+        </div>
+    </div>
+</div>

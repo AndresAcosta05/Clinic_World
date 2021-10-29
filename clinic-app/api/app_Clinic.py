@@ -30,6 +30,7 @@ def index():
 # COMIENZO DE LA TABLA TIPO DE USUARIOS
 
 #QUERY CONSULTAR TODOS
+@cross_origin()
 @app.route('/getAlltipo', methods=['GET'])
 def getAlltipo():
     con = mysql.connection.cursor()
@@ -55,6 +56,7 @@ def getAlltipo():
 
 
 #QUERY CONSULTAR POR ID
+@cross_origin()
 @app.route('/getByIdtipo/<id>', methods=['GET'])
 def getByIdtipo(id):
     con = mysql.connection.cursor()
@@ -78,6 +80,7 @@ def getByIdtipo(id):
 
 
 #QUERY DE INSERCION
+@cross_origin()
 @app.route('/addTipo', methods=['POST'])
 def addTipo():
     #Analice the type of method to send information
@@ -92,6 +95,7 @@ def addTipo():
 
 
 #QUERY DE ACTUALIZACION
+@cross_origin()
 @app.route('/updateTipo/<id>', methods=['PUT'])
 def updateTipo(id):
     nombre = request.json['nombre'],
@@ -109,6 +113,7 @@ def updateTipo(id):
 
 
 #QUERY PARA ELIMINAR
+@cross_origin()
 @app.route('/deleteTipo/<id>', methods = ['DELETE'])
 def deleteTipo(id):
     cur = mysql.connection.cursor()
@@ -122,6 +127,7 @@ def deleteTipo(id):
  # COMIENZO DE LA TABLA USUARIOS
 
 # ruta para consultar todos los registros
+@cross_origin()
 @app.route('/getAllusuarios', methods=['GET'])
 def getAllusuarios():
     con = mysql.connection.cursor()
@@ -154,6 +160,7 @@ def getAllusuarios():
     else:  return jsonify('No hay Informacion Agregada Aun');
 
 # ruta para consultar por parametro
+@cross_origin()
 @app.route('/getByIdusuarios/<id>',methods=['GET'])
 def getByIdusuarios(id):
     con = mysql.connection.cursor()
@@ -181,6 +188,7 @@ def getByIdusuarios(id):
 
 
 #### ruta para crear un registro########
+@cross_origin()
 @app.route('/addusuarios', methods=['POST'])
 def addusuarios():
     if request.method == 'POST':
@@ -205,6 +213,7 @@ def addusuarios():
 
 
 ######### ruta para actualizar################
+@cross_origin()
 @app.route('/updateUsuarios/<id>', methods=['PUT'])
 def updateUsuarios(id):
         tipo_documento = request.json['tipo_documento'] 
@@ -245,6 +254,7 @@ def updateUsuarios(id):
 
 
 ######### ruta para eliminar################
+@cross_origin()
 @app.route('/deleteUsuarios/<id>', methods = ['DELETE'])
 def deleteUsuarios(id):
     con = mysql.connection.cursor()
@@ -255,6 +265,7 @@ def deleteUsuarios(id):
 #COMIENZO DE LA TABLA CLIENTE
 
 # ruta para consultar todos los registros
+@cross_origin()
 @app.route('/getAllcliente', methods=['GET'])
 def getAllcliente():
     con = mysql.connection.cursor()
@@ -283,7 +294,9 @@ def getAllcliente():
      return jsonify(payload)
     else:
          return jsonify('No hay Informacion Agregada Aun');
+
 # ruta para consultar por parametro
+@cross_origin()
 @app.route('/getByIdcliente/<id>',methods=['GET'])
 def getAllByIdcliente(id):
     con = mysql.connection.cursor()
@@ -311,6 +324,7 @@ def getAllByIdcliente(id):
 
 
 #### ruta para crear un registro########
+@cross_origin()
 @app.route('/addCLiente', methods=['POST'])
 def addCliente():
     if request.method == 'POST':
@@ -332,6 +346,7 @@ def addCliente():
 
 
 ######### ruta para actualizar################
+@cross_origin()
 @app.route('/updateCliente/<id>', methods=['PUT'])
 def updateCliente(id):
         tipo_documento = request.json['tipo_documento'] 
@@ -369,6 +384,7 @@ def updateCliente(id):
 
 
 ######### ruta para eliminar################
+@cross_origin()
 @app.route('/deleteCliente/<id>', methods = ['DELETE'])
 def deleteCliente(id):
     con = mysql.connection.cursor()
@@ -380,6 +396,7 @@ def deleteCliente(id):
 #COMIENZO DE LA TABLA ESPECIALIDAD
 
     #QUERY CONSULTAR TODOS 
+@cross_origin()
 @app.route('/getAllespecialidad', methods=['GET'])
 def getAllespecialidad():
     con = mysql.connection.cursor()
@@ -405,6 +422,7 @@ def getAllespecialidad():
 
 
 #QUERY CONSULTAR POR ID
+@cross_origin()
 @app.route('/getByIdespecialidad/<id>', methods=['GET'])
 def getByIdespecialidad(id):
     con = mysql.connection.cursor()
@@ -428,6 +446,7 @@ def getByIdespecialidad(id):
 
 
 #QUERY DE INSERCION
+@cross_origin()
 @app.route('/addEspecialidad', methods=['POST'])
 def addEspecialidad():
     #Analice the type of method to send information
@@ -442,6 +461,7 @@ def addEspecialidad():
 
 
 #QUERY DE ACTUALIZACION
+@cross_origin()
 @app.route('/updateEspelcialidad/<id>', methods=['PUT'])
 def updateEspecialidad(id):
     nombre = request.json['nombre'],
@@ -459,6 +479,7 @@ def updateEspecialidad(id):
 
 
 #QUERY PARA ELIMINAR
+@cross_origin()
 @app.route('/deleteEspecialidad/<id>', methods = ['DELETE'])
 def deleteEspecialidad(id):
     cur = mysql.connection.cursor()
@@ -470,6 +491,7 @@ def deleteEspecialidad(id):
 #COMIENZO DE LA TABLA ESPECIALIDADES DE MEDICOS
 
 #QUERY CONSULTAR TODOS
+@cross_origin()
 @app.route('/getAllEsp_medico', methods=['GET'])
 def getAllEsp_medico():
     con = mysql.connection.cursor()
@@ -498,6 +520,7 @@ def getAllEsp_medico():
 
 
 #QUERY CONSULTAR POR ID
+@cross_origin()
 @app.route('/getByIdEsp_medico/<id>', methods=['GET'])
 def getByIdEsp_medico(id):
     con = mysql.connection.cursor()
@@ -524,6 +547,7 @@ def getByIdEsp_medico(id):
 
 
 #QUERY DE INSERCION
+@cross_origin()
 @app.route('/addEsp_medico', methods=['POST'])
 def addEsp_medico():
     #Analice the type of method to send information
@@ -539,6 +563,7 @@ def addEsp_medico():
 
 
 #QUERY DE ACTUALIZACION
+@cross_origin()
 @app.route('/updateEsp_medico/<id>', methods=['PUT'])
 def updateEsp_medico(id):
     idUsuario = request.json['idUsuario'],
@@ -558,6 +583,7 @@ def updateEsp_medico(id):
 
 
 #QUERY PARA ELIMINAR
+@cross_origin()
 @app.route('/deleteEsp_medico/<id>', methods = ['DELETE'])
 def deleteEsp_medico(id):
     cur = mysql.connection.cursor()
@@ -570,6 +596,7 @@ def deleteEsp_medico(id):
 
 
 #QUERY CONSULTAR TODOS
+@cross_origin()
 @app.route('/getAllCitas', methods=['GET'])
 def getAllCitas():
     con = mysql.connection.cursor()
@@ -602,6 +629,7 @@ def getAllCitas():
 
 
 #QUERY CONSULTAR POR ID
+@cross_origin()
 @app.route('/getByIdCitas/<id>', methods=['GET'])
 def getByIdCitas(id):
     con = mysql.connection.cursor()
@@ -626,6 +654,7 @@ def getByIdCitas(id):
 
 
 #QUERY DE INSERCION
+@cross_origin()
 @app.route('/addCitas', methods=['POST'])
 def addCitas():
     #Analice the type of method to send information
@@ -641,6 +670,7 @@ def addCitas():
 
 
 #QUERY DE ACTUALIZACION
+@cross_origin()
 @app.route('/updateCitas/<id>', methods=['PUT'])
 def updateCitas(id):
     idCliente = request.json['idCliente'],
@@ -660,6 +690,7 @@ def updateCitas(id):
 
 
 #QUERY PARA ELIMINAR
+@cross_origin()
 @app.route('/deleteCitas/<id>', methods = ['DELETE'])
 def deleteCitas(id):
     cur = mysql.connection.cursor()
