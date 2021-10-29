@@ -1,1 +1,83 @@
-<p>medicos works!</p>
+<main>
+<div class="contenedor">
+    <div class="d-flex justify-content-center align-items-center flex-column pt-5 superior">
+        <!--Parte Superior titulo y añadir-->
+        <h1 class="titulo">Registro medicos </h1>
+        <button type="button" id="btnAgregar" data-bs-toggle="modal" data-bs-target="#modalAgregar"
+            class="btn btn-success boton-add d-flex justify-content-center align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-plus-lg" viewBox="0 0 16 16">
+                <path
+                    d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z" />
+            </svg>
+        </button>
+    </div>
+    <div class="contenido-principal table-responsive-xl">
+        <table class="table table-bordered border-primary">
+            <thead>
+                <tr>
+                    <td class="text-center">Tipo de Documento</td>
+                    <td class="text-center">Numero de documento</td>
+                    <td class="text-center">Edad</td>
+                    <td class="text-center">Nombre</td>
+                    <td class="text-center">Segundo nombre</td>
+                    <td class="text-center">Apellido</td>
+                    <td class="text-center">Segundo Apellido</td>
+                    <td class="text-center">Direccion</td>
+                    <td class="text-center">Telefono</td>
+                    <td class="text-center">Tipo de usuario</td>
+                    <td class="text-center">Correo</td>
+                    <td class="text-center">Usuario</td>
+                    <td class="text-center">Contraseña</td>
+                </tr>
+            </thead>
+            <tbody class="cuerpoTabla">
+                <tr>
+                   
+                    <td class="text-center">
+                        <button type="button" class="btn btn-primary" id="btnEditar">Editar</button>
+                        <button type="button" class="btn btn-danger" id="btnEliminar">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</main>
+<!-- Modal -->
+<div class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Registro</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Tipo de identificacion</label>
+                 
+
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Encargado y Area</label>
+                    <select id="select_medicos" class="form-select" aria-label="Default select example">
+                        <option selected disabled>Seleccione un Medico</option>
+                    </select>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Fecha:</span>
+                    <input type="date" class="form-control" aria-label="Username">
+                    <span class="input-group-text">Hora:</span>
+                    <input type="time" class="form-control" aria-label="Server">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-success" id="btnGuardar">Guardar</button>
+            <button type="button" class="btn btn-primary" id="btnActualizar">Actualizar</button>
+        </div>
+    </div>
+</div>
+</div>
