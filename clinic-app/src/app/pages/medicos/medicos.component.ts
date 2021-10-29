@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MedicosService } from 'src/app/services/medicos.service';
 import { FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
-
+import { TipoUsuarioService } from 'src/app/services/tipo-usuario.service';
 @Component({
   selector: 'app-medicos',
   templateUrl: './medicos.component.html',
@@ -12,7 +12,7 @@ export class MedicosComponent implements OnInit {
   myform: FormGroup
   id_editar: number = 0;
 
-  constructor(private _builder:FormBuilder,private medico:MedicosService) { 
+  constructor(private _builder:FormBuilder,private medico:MedicosService, private tipoUsuario:TipoUsuarioService) { 
     this.myform=this._builder.group({
       tipoid: ['',[Validators.required,Validators.minLength(10)]],
       numid: ['',[Validators.required,Validators.minLength(100)]],
@@ -29,6 +29,7 @@ export class MedicosComponent implements OnInit {
 
     })
   }
+  lista_tipo: any;
   lista_medico: any;
   nuevocon = {
     tipoid: null,
@@ -48,6 +49,7 @@ export class MedicosComponent implements OnInit {
   ////// cuando carga el componente se activa ngonInit y llama el metodo  recuperartodos
   ngOnInit() {
     this.recuperarTodos();
+    this.tipoUsuario.recuperarTodos().subscribe(result => this.lista_tipo= result);
 
   }
   /// este metodo llama al servicio que se llama recuperar todo que tiene la 

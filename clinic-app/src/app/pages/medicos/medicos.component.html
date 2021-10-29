@@ -47,10 +47,11 @@
                     <td class="text-center">{{ con.idTipo_usuario }}</td>
                     <td class="text-center">{{ con.correo }}</td>
                     <td class="text-center">{{ con.usuario }}</td>
+                    
                     <td class="aling-center">
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                             <button type="button" class="btn btn-primary" (click)="seleccionar(con)">Actualizar</button>
-                            <button type="button" class="btn btn-danger"(click)="baja(con.id)">Eliminar</button>
+                            <button type="button" class="btn btn-danger"(click)="baja(con.idUsuario)">Eliminar</button>
                         </div>
                     </td>
                 </tr>
@@ -117,6 +118,7 @@
                     <label for="exampleInputEmail1" class="form-label">Tipo de usuario</label>
                     <select id="select_clientes" class="form-select" aria-label="Default select example" formControlName= "usuario">
                         <option selected disabled>Seleccione usuario</option>
+                        <option *ngFor = "let tipo of lista_tipo" value="tipo.idTipo_usuario">{{ tipo.nombre}}</option>
 
                     </select>
                 </div>
