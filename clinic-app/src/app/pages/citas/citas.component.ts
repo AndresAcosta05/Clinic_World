@@ -82,4 +82,15 @@ export class CitasComponent implements OnInit {
       });
     }
   }
+  
+  seleccionarCita(cita: any) {
+    this.idCita = cita.idCitas;
+    this.formCitas.setValue({
+      idCliente: cita.idCliente,
+      idEspecialidad_medico: cita.idEsp_Medico,
+      fecha_hora: cita.fecha
+    });
+    const btn = document.querySelector('#btnAgregar') as HTMLElement;
+    btn.click();
+  }
 }
