@@ -56,21 +56,66 @@
             <form>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Tipo de identificacion</label>
-                 
+                    <input type="text" class="form-control" formControlName="tipoid" />
 
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Encargado y Area</label>
-                    <select id="select_medicos" class="form-select" aria-label="Default select example">
-                        <option selected disabled>Seleccione un Medico</option>
+                    <label for="exampleInputEmail1" class="form-label">Numero de identificacion</label>
+                    <input type="text" class="form-control" formControlName="numid" />
+
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Edad</label>
+                    <input type="text" class="form-control" formControlName="edad" />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Primero nombre</label>
+                     <input type="text" class="form-control" formControlName="prinombre" />
+
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Segundo Nombre</label>
+                    <input type="text" class="form-control" formControlName="segnombre" />
+
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Primer apellido</label>
+                    <input type="text" class="form-control" formControlName="priapellido" />
+
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Segundo apellido</label>
+                    <input type="text" class="form-control" formControlName="segapellido" />
+
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Direccion</label>
+                    <input type="text" class="form-control" formControlName="direccion" />
+
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Telefono</label>
+                    <input type="text" class="form-control" formControlName="telefono" />
+
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Tipo de usuario</label>
+                    <select id="select_clientes" class="form-select" aria-label="Default select example" formControlName= "usuario">
+                        <option selected disabled>Seleccione usuario</option>
+
                     </select>
                 </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Fecha:</span>
-                    <input type="date" class="form-control" aria-label="Username">
-                    <span class="input-group-text">Hora:</span>
-                    <input type="time" class="form-control" aria-label="Server">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Correo</label>
+                    <input type="text" class="form-control" formControlName="correo" />
+
                 </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Contraseña</label>
+                    <input type="text" class="form-control" formControlName="contrase" />
+
+                </div>
+               
             </form>
         </div>
         <div class="modal-footer">
