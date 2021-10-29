@@ -18,9 +18,13 @@ export class MedicosComponent implements OnInit {
       numid: ['',[Validators.required,Validators.minLength(100)]],
       edad: ['',[Validators.required,Validators.minLength(100)]],
       prinombre: ['',[Validators.required,Validators.minLength(100)]],
+      segnombre: ['',[Validators.required,Validators.minLength(100)]],
       priapellido: ['',[Validators.required,Validators.minLength(100)]],
       segapellido: ['',[Validators.required,Validators.minLength(100)]],
+      direccion: ['',[Validators.required,Validators.minLength(100)]],
+     telefono: ['',[Validators.required,Validators.minLength(100)]],
       correo: ['',[Validators.required,Validators.minLength(100)]],
+      usuario: ['',[Validators.required,Validators.minLength(100)]],
       contrase: ['',[Validators.required,Validators.minLength(100)]]
 
     })
@@ -36,8 +40,8 @@ export class MedicosComponent implements OnInit {
       segapellido: null,
       direccion:null,
       telefono:null,
-      usuario:null,
       correo:null, 
+      usuario:null,
       contrase:null
 
   }
@@ -62,10 +66,10 @@ export class MedicosComponent implements OnInit {
       segnombre:value,
       priapellido:value.priapellido,
       segapellido: value.segapellido,
-      direccion:null,
-      telefono:null,
-      usuario:value.usuario,
+      direccion:value.direccion,
+      telefono:value.telefono,
       correo:value.correo, 
+      usuario:value.usuario,
       contrase:value.contrase
      
     }
@@ -103,8 +107,8 @@ export class MedicosComponent implements OnInit {
       segapellido: value.segapellido,
       direccion:null,
       telefono:null,
-      usuario:value.usuario,
       correo:value.correo, 
+      usuario:value.usuario,
       contrase:value.contrase
     }
     this.medico.modificacion(this.nuevocon,this.id_editar).subscribe(datos => {
@@ -128,8 +132,9 @@ export class MedicosComponent implements OnInit {
     segapellido: con_edi['segapellido'],
     direccion:con_edi['direccion'],
     telefono:con_edi['telefono'],
-    usuario:con_edi['usuario'],
+   
     correo:con_edi['correo'], 
+    usuario:con_edi['usuario'],
     contrase:con_edi['contraseña']
   
   })

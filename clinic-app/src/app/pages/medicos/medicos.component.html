@@ -16,6 +16,7 @@
         <table class="table table-bordered border-primary">
             <thead>
                 <tr>
+                    <td class="text-center">ID</td>
                     <td class="text-center">Tipo de Documento</td>
                     <td class="text-center">Numero de documento</td>
                     <td class="text-center">Edad</td>
@@ -28,15 +29,29 @@
                     <td class="text-center">Tipo de usuario</td>
                     <td class="text-center">Correo</td>
                     <td class="text-center">Usuario</td>
-                    <td class="text-center">Contraseña</td>
+                    <td class="text-center">ACCIONES</td>
                 </tr>
             </thead>
-            <tbody class="cuerpoTabla">
-                <tr>
-                   
-                    <td class="text-center">
-                        <button type="button" class="btn btn-primary" id="btnEditar">Editar</button>
-                        <button type="button" class="btn btn-danger" id="btnEliminar">Eliminar</button>
+            <tbody>
+                <tr *ngFor="let con of lista_medico">
+                    <td class="text-center">{{ con.idUsuario }}</td>
+                    <td class="text-center">{{ con.tipo_documento }}</td>
+                    <td class="text-center">{{ con.numero_documento }}</td>
+                    <td class="text-center">{{ con.edad }}</td>
+                    <td class="text-center">{{ con.nombre }} </td>
+                    <td class="text-center">{{ con.segundo_nombre }}</td>
+                    <td class="text-center">{{ con.apellido }}</td>
+                    <td class="text-center"> {{ con.segundo_apellido }}</td>
+                    <td class="text-center">{{ con.direccion }}</td>
+                    <td class="text-center">{{ con.telefono }}</td>
+                    <td class="text-center">{{ con.idTipo_usuario }}</td>
+                    <td class="text-center">{{ con.correo }}</td>
+                    <td class="text-center">{{ con.usuario }}</td>
+                    <td class="aling-center">
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                            <button type="button" class="btn btn-primary" (click)="seleccionar(con)">Actualizar</button>
+                            <button type="button" class="btn btn-danger"(click)="baja(con.id)">Eliminar</button>
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -53,7 +68,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form>
+            <form  [formGroup]="myform">
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Tipo de identificacion</label>
                     <input type="text" class="form-control" formControlName="tipoid" />
@@ -120,8 +135,8 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-success" id="btnGuardar">Guardar</button>
-            <button type="button" class="btn btn-primary" id="btnActualizar">Actualizar</button>
+            <button type="button" class="btn btn-success" (click)="alta(myform.value)">Guardar</button>
+            <button type="button" class="btn btn-primary" (click)="modificacion(myform.value)" >Actualizar</button>
         </div>
     </div>
 </div>
