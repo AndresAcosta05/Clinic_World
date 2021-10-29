@@ -1,0 +1,70 @@
+html {
+    box-sizing: border-box;
+}
+*, *::after, *::before {
+    box-sizing: inherit;
+}
+/*Utilidades*/
+.no-margin{
+    margin: 0;
+}
+.no-padding{
+    padding: 0;
+}
+.text-center{
+    text-align: center;
+}
+.no-visible {
+    visibility: hidden;
+    width: 0;
+}
+.visible {
+    visibility: visible;
+    width: auto;
+}
+/*Globals*/
+.contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+h1, h2, h3, h4 {
+    text-align: center;
+}
+.titulo {
+    font-weight: bold;
+    font-size: 40px;
+    text-transform: uppercase;
+}
+/*Interfaz*/
+.header {
+   
+    max-height: 250px;
+    background-position: center center;
+    /*Flex para centrado*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header_texto {
+    font-size: 110px;
+    color: white;
+}
+.contenido-principal {
+    margin-top: 20px;
+    height: 90px;
+}
+/*Media Querys*/
+@media (min-width: 768px) {
+    .header {
+        height: 300px;
+    }
+    .superior {
+        flex-direction: row !important;
+    }
+}
+.boton-add {
+    margin-left: 20px;
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+}

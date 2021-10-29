@@ -24,7 +24,14 @@ const routes: Routes = [
       {
         path: 'nosotros',
         loadChildren: () => import('./Pages/nosotros/nosotros.module').then((m) => m.NosotrosModule),
+      },{
+        path: 'medicos',
+        loadChildren: () => import('./pages/medicos/medicos-routing.module').then((m) => m.MedicosRoutingModule),
+      },{
+        path: 'citas',
+        loadChildren: () => import('./pages/citas/citas-routing.module').then((m) => m.CitasRoutingModule),
       },
+      
       {
         path: '',
         redirectTo: '/inicio',
