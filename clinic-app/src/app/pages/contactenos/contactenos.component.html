@@ -10,6 +10,7 @@
             </svg>
         </button>
     </div>
+    <div class="alerta-div"></div>
     <div class="contenido-principal table-responsive-xl">
         <table class="table table-bordered border-primary">
             <thead>
@@ -37,8 +38,10 @@
                     <td class="text-center">{{ cliente.correo }}</td>
                     <td class="aling-center">
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                            <button type="button" class="btn btn-primary">Actualizar</button>
-                            <button type="button" class="btn btn-danger">Eliminar</button>
+                            <button type="button" class="btn btn-primary"
+                            (click)="seleccionarCliente(cliente)">Editar</button>
+                            <button type="button" class="btn btn-danger"
+                            (click)="eliminarCliente(cliente.idCliente, cliente.nombre, cliente.apellido)">Eliminar</button>
                         </div>
                     </td>
                 </tr>
@@ -55,60 +58,68 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form [formGroup]="formClientes">
                     <div class="input-group mb-3">
                         <span class="input-group-text">Tipo Documento:</span>
-                        <select name="" id="" class="form-control">
+                        <select name="" id="" class="form-control" formControlName="tipo_documento">
                             <option value="" disabled selected>--Seleccionar--</option>
-                            <option value="">TI</option>
-                            <option value="">CC</option>
+                            <option value="CC">TI</option>
+                            <option value="TI">CC</option>
                         </select>
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Documento:</span>
                         <input type="text" class="form-control" placeholder="Numero Documento"
-                            aria-describedby="basic-addon1">
+                            aria-describedby="basic-addon1" formControlName="numero_documento">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Nombre</span>
-                        <input type="text" class="form-control" placeholder="Nombre" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Nombre" 
+                        aria-describedby="basic-addon1" formControlName="nombre">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Segundo Nombre:</span>
                         <input type="text" class="form-control" placeholder="Segundo Nombre"
-                            aria-describedby="basic-addon1">
+                            aria-describedby="basic-addon1" formControlName="segundo_nombre">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Apellido:</span>
-                        <input type="text" class="form-control" placeholder="Apellido" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Apellido"
+                         aria-describedby="basic-addon1" formControlName="apellido">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Segundo Apellido:</span>
                         <input type="text" class="form-control" placeholder="Segundo Apellido"
-                            aria-describedby="basic-addon1">
+                            aria-describedby="basic-addon1" formControlName="segundo_apellido">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Edad:</span>
-                        <input type="number" class="form-control" placeholder="Edad" aria-describedby="basic-addon1">
+                        <input type="number" class="form-control" placeholder="Edad" 
+                        aria-describedby="basic-addon1" formControlName="edad">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Direccion:</span>
-                        <input type="text" class="form-control" placeholder="Direccion" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Direccion" 
+                        aria-describedby="basic-addon1" formControlName="direccion">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Correo:</span>
-                        <input type="text" class="form-control" placeholder="Correo" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Correo" 
+                        aria-describedby="basic-addon1" formControlName="correo">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Telefono:</span>
-                        <input type="text" class="form-control" placeholder="Telefono" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Telefono" 
+                        aria-describedby="basic-addon1" formControlName="telefono">
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-success" id="btnGuardar">Guardar</button>
-                <button type="button" class="btn btn-primary" id="btnActualizar">Actualizar</button>
+                <button type="button" class="btn btn-success" id="btnGuardar" 
+                (click)="insertarClientes(formClientes.value)">Guardar</button>
+                <button type="button" class="btn btn-primary" id="btnActualizar"
+                (click)="actualizarCliente(formClientes.value)">Actualizar</button>
             </div>
         </div>
     </div>

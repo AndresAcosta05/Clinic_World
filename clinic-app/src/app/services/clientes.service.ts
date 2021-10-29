@@ -19,17 +19,17 @@ export class ClientesService {
   }
 
   //insertar
-  alta(cliente: any): Observable<any> {
+  Insertar(cliente: any): Observable<any> {
     return this.http.post(`${this.url}addCLiente`, cliente);
   }
 
   //eliminar
-  baja(cliente: number) {
+  Eliminar(cliente: number) {
     return this.http.delete(`${this.url}deleteCliente/${cliente}`);
   }
 
   //editar
-  modificacion(cliente: any, id: number) {
+  Actualizar(cliente: any, id: number) {
     return this.http.put(`${this.url}/updateCliente/` + id, cliente);
   }
 }

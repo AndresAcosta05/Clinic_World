@@ -13,7 +13,7 @@ import { TokenInterceptorService } from "./core/services/token-interceptors.serv
 import { NavegacionComponent } from './pages/layout/components/navegacion/navegacion.component';
 import { MedicosComponent } from './pages/medicos/medicos.component';
 import { CitasComponent } from './pages/citas/citas.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule  
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
