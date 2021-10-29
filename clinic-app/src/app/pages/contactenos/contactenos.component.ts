@@ -1,4 +1,3 @@
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClientesService } from 'src/app/services/clientes.service';
@@ -50,8 +49,9 @@ export class ContactenosComponent implements OnInit {
   }
 
   consultarClientes() {
-    this.clientes.recuperarTodos().subscribe(data => 
-      this.listaClientes = (data !== 'No hay Informacion Agregada Aun' ? data : [ ]));
+    this.clientes.recuperarTodos().subscribe(data =>
+      this.listaClientes = (data !== 'No hay Informacion Agregada Aun' ? data : [])
+    );
   }
 
   insertarClientes(cliente: any) {

@@ -1,93 +1,61 @@
-h2,
-h3,
-p,
-legend {
+html {
+  box-sizing: border-box;
+}
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+/*Utilidades*/
+.no-margin{
+  margin: 0;
+}
+.no-padding{
+  padding: 0;
+}
+.text-center{
   text-align: center;
 }
-.flex-center {
+.no-visible {
+  visibility: hidden;
+  width: 0;
+}
+.visible {
+  visibility: visible;
+  width: auto;
+}
+.aling-center {
   display: flex;
   justify-content: center;
 }
-
-.boton {
-  text-decoration: none;
-  background-color: rgb(104, 104, 255);
-  padding: 10px 30px;
-  color: white;
-  text-transform: uppercase;
-  border-radius: 10px;
+/*Globals*/
+.contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+h1, h2, h3, h4, h5 {
   text-align: center;
 }
-
-.contenedor {
-  width: min(90%, 1200px);
-  margin: 0 auto 20px auto;
-}
-
-.imagen_contacto {
-  background-image: url(../../../assets/img/contacto.jpg);
-  height: 400px;
-  background-position: center center;
-}
-
-.formulario {
-  width: 90%;
-  background-color: white;
-  padding: 50px;
-  margin: -300px auto 0 auto;
-}
-
-legend {
-  text-transform: uppercase;
-  font-size: 20px;
-}
-
-.informacion {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 30px;
-  padding: 20px;
-}
-
-.campos {
-  margin-bottom: 20px;
-  display: flex;
-}
-.campos:last-of-type {
-  margin: 0;
-}
-
-.campos label {
-  flex: 0 0 160px;
+.titulo {
+  font-weight: bold;
+  font-size: 40px;
   text-transform: uppercase;
 }
 
-.campos input,
-.campos select {
-  flex: 1;
-  height: 30px;
+.contenido-principal {
+  margin-top: 20px;
+  min-height: 90px;
+}
+/*Media Querys*/
+@media (min-width: 768px) {
+  .header {
+      height: 300px;
+  }
+  .superior {
+      flex-direction: row !important;
+  }
+}
+.boton-add {
+  margin-left: 20px;
+  height: 40px;
+  width: 40px;
   border-radius: 10px;
-  border: 1px solid gray;
-  padding-left: 10px;
-}
-
-@media (max-width: 768px) {
-  .informacion {
-    grid-template-columns: 1fr;
-  }
-
-  .campos {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .campos input,
-  .campos select,
-  .campos label {
-    flex: auto;
-  }
-
-  .boton {
-    display: block;
-  }
 }

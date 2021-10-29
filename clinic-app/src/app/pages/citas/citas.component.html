@@ -1,76 +1,83 @@
-<h2>CITAS MÉDICAS</h2>
-
-    <main>
-        <div class="contenedor">
-            <div class="d-flex justify-content-center align-items-center flex-column pt-5 superior">
-                <!--Parte Superior titulo y añadir-->
-                <h1 class="titulo">Citas Programadas</h1>
-                <button type="button" id="btnAgregar" data-bs-toggle="modal" data-bs-target="#modalAgregar"
-                    class="btn btn-success boton-add d-flex justify-content-center align-items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-plus-lg" viewBox="0 0 16 16">
-                        <path
-                            d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z" />
-                    </svg>
-                </button>
+<main class="contenedor">
+    <div class="d-flex justify-content-center align-items-center flex-column pt-5 superior">
+        <!--Parte Superior titulo y añadir-->
+        <h1 class="titulo">Citas Programadas</h1>
+        <button type="button" id="btnAgregar" data-bs-toggle="modal" data-bs-target="#modalAgregar"
+            class="btn btn-success boton-add d-flex justify-content-center align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg"
+                viewBox="0 0 16 16">
+                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z" />
+            </svg>
+        </button>
+    </div>
+    <div class="alerta-div"></div>
+    <div class="contenido-principal table-responsive-xl">
+        <table class="table table-bordered border-primary">
+            <thead>
+                <tr>
+                    <td class="text-center">Numero</td>
+                    <td class="text-center">Cliente</td>
+                    <td class="text-center">Encargado y Area</td>
+                    <td class="text-center">Fecha y Hora</td>
+                    <td class="text-center">Acciones</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cita of listaCitas">
+                    <td class="text-center">{{ cita.idCitas }}</td>
+                    <td class="text-center">{{ cita.cliente }}</td>
+                    <td class="text-center">{{ cita.medico }} - {{ cita.especialidad }}</td>
+                    <td class="text-center">{{ cita.fecha }}</td>
+                    <td class="aling-center">
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                            <button type="button" class="btn btn-primary"
+                            (click)="seleccionarCita(cita)">Editar</button>
+                            <button type="button" class="btn btn-danger"
+                            (click)="eliminarCita(cita.idCitas)">Eliminar</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<!-- Modal -->
+<div class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agendar una Cita</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="contenido-principal table-responsive-xl">
-                <table class="table table-bordered border-primary">
-                    <thead>
-                        <tr>
-                            <td class="text-center">Numero</td>
-                            <td class="text-center">Cliente</td>
-                            <td class="text-center">Encargado y Area</td>
-                            <td class="text-center">Fecha y Hora</td>
-                            <td class="text-center">Acciones</td>
-                        </tr>
-                    </thead>
-                    <tbody class="cuerpoTabla">
-                        
-                    </tbody>
-                </table>
+            <div class="modal-body">
+                <form [formGroup]="formCitas">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Cliente</label>
+                        <select id="select_clientes" class="form-select" aria-label="Default select example" formControlName="idCliente">
+                            <option selected disabled>Seleccione un Cliente</option>
+                            <option *ngFor="let cliente of listaClientes" value="{{ cliente.idCliente }}">{{ cliente.nombre }} {{ cliente.apellido }}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Encargado y Area</label>
+                        <select id="select_medicos" class="form-select" aria-label="Default select example" formControlName="idEspecialidad_medico">
+                            <option selected disabled>Seleccione un Medico</option>
+                            <option *ngFor="let esp_Medico of listaEsp_medicos" value="{{ esp_Medico.idEspecialidad_medico }}">{{ esp_Medico.medico }} - {{ esp_Medico.especialidad }}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Fecha y hora:</label>
+                        <input id="fecha_input" type="datetime-local" class="form-control" aria-label="Username" formControlName="fecha_hora">
+                    </div>
+                </form>
             </div>
-        </div>
-    </main>
-    <!-- Modal -->
-    <div class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Agendar una Cita</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Cliente</label>
-                            <select id="select_clientes" class="form-select" aria-label="Default select example">
-                                <option selected disabled>Seleccione un Cliente</option>
-
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Encargado y Area</label>
-                            <select id="select_medicos" class="form-select" aria-label="Default select example">
-                                <option selected disabled>Seleccione un Medico</option>
-                            </select>
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Fecha:</span>
-                            <input id="fecha_input" type="date" class="form-control" aria-label="Username">
-                            <span class="input-group-text">Hora:</span>
-                            <input id="hora_input" type="time" class="form-control" aria-label="Server">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success" id="btnGuardar">Guardar</button>
-                    <button type="button" class="btn btn-primary" id="btnActualizar">Actualizar</button>
-                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" id="btnGuardar"
+                (click)="insertarCita(formCitas.value)">Guardar</button>
+                <button type="button" class="btn btn-primary" id="btnActualizar"
+                (click)="actualizarcita(formCitas.value)">Actualizar</button>
             </div>
         </div>
     </div>
-   
-
-
+</div>
