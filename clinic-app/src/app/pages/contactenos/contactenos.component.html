@@ -22,10 +22,26 @@
                     <td class="text-center">Direccion</td>
                     <td class="text-center">Telefono</td>
                     <td class="text-center">Correo</td>
+                    <td class="text-center">Acciones</td>
                 </tr>
             </thead>
-            <tbody class="cuerpoTabla">
-
+            <tbody>
+                <tr *ngFor="let cliente of listaClientes">
+                    <td class="text-center">{{ cliente.tipo_documento }}</td>
+                    <td class="text-center">{{ cliente.numero_documento }}</td>
+                    <td class="text-center">{{ cliente.nombre }} {{ cliente.segundo_nombre }}</td>
+                    <td class="text-center">{{ cliente.apellido }} {{ cliente.segundo_apellido }}</td>
+                    <td class="text-center">{{ cliente.edad }}</td>
+                    <td class="text-center">{{ cliente.direccion }}</td>
+                    <td class="text-center">{{ cliente.telefono }}</td>
+                    <td class="text-center">{{ cliente.correo }}</td>
+                    <td class="aling-center">
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                            <button type="button" class="btn btn-primary">Actualizar</button>
+                            <button type="button" class="btn btn-danger">Eliminar</button>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -50,39 +66,42 @@
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Documento:</span>
-                         <input type="text" class="form-control" placeholder="Numero Documento"  aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Numero Documento"
+                            aria-describedby="basic-addon1">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Nombre</span>
-                         <input type="text" class="form-control" placeholder="Nombre"  aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Nombre" aria-describedby="basic-addon1">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Segundo Nombre:</span>
-                         <input type="text" class="form-control" placeholder="Segundo Nombre"  aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Segundo Nombre"
+                            aria-describedby="basic-addon1">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Apellido:</span>
-                         <input type="text" class="form-control" placeholder="Apellido"  aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Apellido" aria-describedby="basic-addon1">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Segundo Apellido:</span>
-                         <input type="text" class="form-control" placeholder="Segundo Apellido"  aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Segundo Apellido"
+                            aria-describedby="basic-addon1">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Edad:</span>
-                         <input type="number" class="form-control" placeholder="Edad"  aria-describedby="basic-addon1">
+                        <input type="number" class="form-control" placeholder="Edad" aria-describedby="basic-addon1">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Direccion:</span>
-                         <input type="text" class="form-control" placeholder="Direccion"  aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Direccion" aria-describedby="basic-addon1">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Correo:</span>
-                         <input type="text" class="form-control" placeholder="Correo"  aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Correo" aria-describedby="basic-addon1">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Telefono:</span>
-                         <input type="text" class="form-control" placeholder="Telefono"  aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Telefono" aria-describedby="basic-addon1">
                     </div>
                 </form>
             </div>
