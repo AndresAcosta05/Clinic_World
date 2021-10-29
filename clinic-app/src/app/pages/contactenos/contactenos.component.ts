@@ -50,7 +50,8 @@ export class ContactenosComponent implements OnInit {
   }
 
   consultarClientes() {
-    this.clientes.recuperarTodos().subscribe(data => this.listaClientes = data);
+    this.clientes.recuperarTodos().subscribe(data => 
+      this.listaClientes = (data !== 'No hay Informacion Agregada Aun' ? data : [ ]));
   }
 
   insertarClientes(cliente: any) {

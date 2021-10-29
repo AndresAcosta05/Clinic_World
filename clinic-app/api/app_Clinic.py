@@ -10,7 +10,7 @@ CORS(app)
 #MYSQL Connection
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '1706'
+app.config['MYSQL_PASSWORD'] = 'root'
 app.config['MYSQL_DB'] = 'clinic_world'
 mysql = MySQL(app)
 #llave de encriptado
@@ -34,8 +34,8 @@ def index():
 @app.route('/getAlltipo', methods=['GET'])
 def getAlltipo():
     con = mysql.connection.cursor()
-    con.execute('SELECT * FROM tipo_usuarios');
-    res = con.fetchall();
+    con.execute('SELECT * FROM tipo_usuarios')
+    res = con.fetchall()
     #close connection
     con.close()
     #loop for scan data
@@ -52,7 +52,7 @@ def getAlltipo():
             content = {}
         return jsonify(payload)
     else:
-        return jsonify('No hay Informacion Agregada Aun');
+        return jsonify('No hay Informacion Agregada Aun')
 
 
 #QUERY CONSULTAR POR ID
@@ -157,7 +157,7 @@ def getAllusuarios():
         payload.append(content)
         content = {}
      return jsonify(payload)
-    else:  return jsonify('No hay Informacion Agregada Aun');
+    else:  return jsonify('No hay Informacion Agregada Aun')
 
 # ruta para consultar por parametro
 @cross_origin()
@@ -293,7 +293,7 @@ def getAllcliente():
        content = {}
      return jsonify(payload)
     else:
-         return jsonify('No hay Informacion Agregada Aun');
+         return jsonify('No hay Informacion Agregada Aun')
 
 # ruta para consultar por parametro
 @cross_origin()
@@ -400,8 +400,8 @@ def deleteCliente(id):
 @app.route('/getAllespecialidad', methods=['GET'])
 def getAllespecialidad():
     con = mysql.connection.cursor()
-    con.execute('SELECT * FROM especialidad');
-    res = con.fetchall();
+    con.execute('SELECT * FROM especialidad')
+    res = con.fetchall()
     #close connection
     con.close()
     #loop for scan data
@@ -418,7 +418,7 @@ def getAllespecialidad():
             content = {}
         return jsonify(payload)
     else:
-        return jsonify('No hay Informacion Agregada Aun');
+        return jsonify('No hay Informacion Agregada Aun')
 
 
 #QUERY CONSULTAR POR ID
@@ -498,7 +498,7 @@ def getAllEsp_medico():
     con.execute('SELECT idEspecialidad_medico, concat(usuarios.nombre, " ", usuarios.apellido) as usuario, especialidad.nombre as especialidad, fecha_creacion FROM especialidad_medico,' +
     'especialidad, usuarios WHERE especialidad_medico.idEspecialidad = especialidad.idEspecialidad ' + 
     'AND especialidad_medico.idUsuario = usuarios.idUsuario')
-    res = con.fetchall();
+    res = con.fetchall()
     #close connection
     con.close()
     #loop for scan data
@@ -516,7 +516,7 @@ def getAllEsp_medico():
             content = {}
         return jsonify(payload)
     else:
-        return jsonify('No hay Informacion Agregada Aun');
+        return jsonify('No hay Informacion Agregada Aun')
 
 
 #QUERY CONSULTAR POR ID
@@ -604,7 +604,7 @@ def getAllCitas():
     +'FROM citas, usuarios, especialidad, clientes, especialidad_medico '
     +'WHERE citas.idCliente = clientes.idCliente AND citas.idEspecialidad_medico = especialidad_medico.idEspecialidad_medico AND especialidad_medico.idUsuario = usuarios.idUsuario '
     +'AND especialidad_medico.idEspecialidad = especialidad.idEspecialidad')
-    res = con.fetchall();
+    res = con.fetchall()
     #close connection
     con.close()
     #loop for scan data
@@ -620,12 +620,12 @@ def getAllCitas():
                 'idCliente': result[4],
                 'idEsp_Medico': result[5],
                 'especialidad': result[6]
-            };
+            }
             payload.append(content)
             content = {}
         return jsonify(payload)
     else:
-        return jsonify('No hay Informacion Agregada Aun');
+        return jsonify('No hay Informacion Agregada Aun')
 
 
 #QUERY CONSULTAR POR ID

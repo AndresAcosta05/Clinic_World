@@ -50,13 +50,14 @@ export class MedicosComponent implements OnInit {
   ////// cuando carga el componente se activa ngonInit y llama el metodo  recuperartodos
   ngOnInit() {
     this.recuperarTodos();
-    this.tipoUsuario.recuperarTodos().subscribe(result => this.lista_tipo= result);
-
+    this.tipoUsuario.recuperarTodos().subscribe(result => 
+      this.lista_tipo = (result !== 'No hay Informacion Agregada Aun' ? result : [ ]));
   }
   /// este metodo llama al servicio que se llama recuperar todo que tiene la 
   //ruta para la api--> recuperar toto = getAll
   recuperarTodos() {
-    this.medico.recuperarTodos().subscribe(result => this.lista_medico = result);
+    this.medico.recuperarTodos().subscribe(result => 
+      this.lista_medico = (result !== 'No hay Informacion Agregada Aun' ? result : [ ]));
   }
   //este metodo carga los datos del formulario y llama al servicio con metodo alta
   // que tiene la ruta de agregar  alta=add_medico
