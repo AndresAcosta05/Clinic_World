@@ -20,8 +20,8 @@ export class MedicosComponent implements OnInit {
       prinombre: ['',[Validators.required,Validators.minLength(100)]],
       priapellido: ['',[Validators.required,Validators.minLength(100)]],
       segapellido: ['',[Validators.required,Validators.minLength(100)]],
-      correo: ['',[Validators.required,Validators.minLength(10)]],
-      contrase: ['',[Validators.required,Validators.minLength(10)]]
+      correo: ['',[Validators.required,Validators.minLength(100)]],
+      contrase: ['',[Validators.required,Validators.minLength(100)]]
 
     })
   }
