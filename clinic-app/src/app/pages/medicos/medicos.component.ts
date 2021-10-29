@@ -14,37 +14,38 @@ export class MedicosComponent implements OnInit {
 
   constructor(private _builder:FormBuilder,private medico:MedicosService, private tipoUsuario:TipoUsuarioService) { 
     this.myform=this._builder.group({
-      tipoid: ['',[Validators.required,Validators.minLength(10)]],
-      numid: ['',[Validators.required,Validators.minLength(100)]],
+      tipo_documento: ['',[Validators.required,Validators.minLength(10)]],
+      numero_documento: ['',[Validators.required,Validators.minLength(100)]],
       edad: ['',[Validators.required,Validators.minLength(100)]],
-      prinombre: ['',[Validators.required,Validators.minLength(100)]],
-      segnombre: ['',[Validators.required,Validators.minLength(100)]],
-      priapellido: ['',[Validators.required,Validators.minLength(100)]],
-      segapellido: ['',[Validators.required,Validators.minLength(100)]],
+      nombre: ['',[Validators.required,Validators.minLength(100)]],
+      segundo_nombre: ['',[Validators.required,Validators.minLength(100)]],
+      apellido: ['',[Validators.required,Validators.minLength(100)]],
+      segundo_apellido: ['',[Validators.required,Validators.minLength(100)]],
       direccion: ['',[Validators.required,Validators.minLength(100)]],
      telefono: ['',[Validators.required,Validators.minLength(100)]],
       correo: ['',[Validators.required,Validators.minLength(100)]],
       usuario: ['',[Validators.required,Validators.minLength(100)]],
-      contrase: ['',[Validators.required,Validators.minLength(100)]]
+      contraseña: ['',[Validators.required,Validators.minLength(100)]],
+      idTipo_usuario: ['',[Validators.required,Validators.minLength(100)]],
 
     })
   }
   lista_tipo: any;
   lista_medico: any;
   nuevocon = {
-    tipoid: null,
-      numid:null,
+    tipo_documento: null,
+    numero_documento:null,
       edad: null,
-      prinombre: null,
-      segnombre:null,
-      priapellido:null,
-      segapellido: null,
+      nombre: null,
+      segundo_nombre:null,
+      apellido:null,
+      segundo_apellido: null,
       direccion:null,
       telefono:null,
       correo:null, 
       usuario:null,
-      contrase:null
-
+      contraseña:null,
+      idTipo_usuario: null
   }
   ////// cuando carga el componente se activa ngonInit y llama el metodo  recuperartodos
   ngOnInit() {
@@ -60,20 +61,22 @@ export class MedicosComponent implements OnInit {
   //este metodo carga los datos del formulario y llama al servicio con metodo alta
   // que tiene la ruta de agregar  alta=add_medico
   alta(value: any) {
+    console.log(value);
+    
     this.nuevocon = {
-      tipoid: value.tipoid,
-      numid: value.numid,
+      tipo_documento: value.tipo_documento,
+      numero_documento: value.numero_documento,
       edad: value.edad,
-      prinombre: value.prinombre,
-      segnombre: value,
-      priapellido: value.priapellido,
-      segapellido: value.segapellido,
+      nombre: value.nombre,
+      segundo_nombre: value.segundo_nombre,
+      apellido: value.apellido,
+      segundo_apellido: value.segundo_apellido,
       direccion:value.direccion,
       telefono:value.telefono,
       correo:value.correo, 
       usuario:value.usuario,
-      contrase:value.contrase
-     
+      contraseña:value.contraseña,
+      idTipo_usuario: value.idTipo_usuario
     }
     this.medico.alta(this.nuevocon).subscribe(datos => {
       console.log(datos)
@@ -100,18 +103,19 @@ export class MedicosComponent implements OnInit {
   // llama el metodo baja del servicio  modificacion=update/<id>
   modificacion(value: any) {
     this.nuevocon = {
-      tipoid: value.tipoid,
-      numid: value.numid,
+      tipo_documento: value.tipo_documento,
+      numero_documento: value.numero_documento,
       edad: value.edad,
-      prinombre: value.prinombre,
-      segnombre: value,
-      priapellido: value.priapellido,
-      segapellido: value.segapellido,
-      direccion:null,
-      telefono:null,
+      nombre: value.nombre,
+      segundo_nombre: value.segundo_nombre,
+      apellido: value.apellido,
+      segundo_apellido: value.segundo_apellido,
+      direccion: value.direccion,
+      telefono:value.telefono,
       correo:value.correo, 
       usuario:value.usuario,
-      contrase:value.contrase
+      contraseña:value.contraseña,
+      idTipo_usuario: value.idTipo_usuario
     }
     this.medico.modificacion(this.nuevocon, this.id_editar).subscribe(datos => {
       console.log(datos)
