@@ -297,10 +297,10 @@ def getAllcliente():
 
 # ruta para consultar por parametro
 @cross_origin()
-@app.route('/getByIdcliente/<id>',methods=['GET'])
-def getAllByIdcliente(id):
+@app.route('/getByIdcliente/<documento>',methods=['GET'])
+def getAllByIdcliente(documento):
     con = mysql.connection.cursor()
-    con.execute('SELECT * FROM clientes WHERE idCliente = %s', (id))
+    con.execute('SELECT * FROM clientes WHERE numero_documento = %s', (documento))
     res = con.fetchall()
     con.close()
     payload = []
@@ -347,8 +347,9 @@ def addCliente():
 
 ######### ruta para actualizar################
 @cross_origin()
-@app.route('/updateCliente/<id>', methods=['PUT'])
-def updateCliente(id):
+@app.route('/updateCliente/<documento>', methods=['PUT'])
+def updateCliente(documento):
+        print(request.json)
         tipo_documento = request.json['tipo_documento'] 
         numero_documento = request.json['numero_documento']        
         edad = request.json['edad']  
@@ -372,11 +373,11 @@ def updateCliente(id):
                 direccion = %s,
                 correo = %s,
                 telefono = %s
-            WHERE idCliente = %s
+            WHERE numero_documento = %s
         """, ( tipo_documento, numero_documento, edad, nombre, segundo_nombre, apellido, segundo_apellido, 
-                direccion, correo, telefono, id))
+                direccion, correo, telefono, documento))
         mysql.connection.commit()
-        return jsonify({"informacion":"Registro actualizado"})
+        return jsonify({"informacion":documento})
 
 
 
@@ -385,10 +386,11 @@ def updateCliente(id):
 
 ######### ruta para eliminar################
 @cross_origin()
-@app.route('/deleteCliente/<id>', methods = ['DELETE'])
-def deleteCliente(id):
+@app.route('/deleteCliente/<documento>', methods = ['DELETE'])
+def deleteCliente(documento):
+    print(type(documento))
     con = mysql.connection.cursor()
-    con.execute('DELETE FROM clientes WHERE idCliente = %s', (id))
+    con.execute("DELETE FROM clientes WHERE numero_documento = %s" %documento)
     mysql.connection.commit()
     return jsonify({"informacion":"Registro eliminado"})
 

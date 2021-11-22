@@ -41,7 +41,7 @@
                             <button type="button" class="btn btn-primary"
                             (click)="seleccionarCliente(cliente)">Editar</button>
                             <button type="button" class="btn btn-danger"
-                            (click)="eliminarCliente(cliente.idCliente, cliente.nombre, cliente.apellido)">Eliminar</button>
+                            (click)="eliminarCliente(cliente.numero_documento, cliente.nombre, cliente.apellido)">Eliminar</button>
                         </div>
                     </td>
                 </tr>
@@ -63,8 +63,8 @@
                         <span class="input-group-text">Tipo Documento:</span>
                         <select name="" id="" class="form-control" formControlName="tipo_documento">
                             <option value="" disabled selected>--Seleccionar--</option>
-                            <option value="CC">TI</option>
-                            <option value="TI">CC</option>
+                            <option value="CC">CC</option>
+                            <option value="TI">TI</option>
                         </select>
                     </div>
                     <div class="input-group mb-3">

@@ -24,12 +24,12 @@ export class ClientesService {
   }
 
   //eliminar
-  Eliminar(cliente: number) {
-    return this.http.delete(`${this.url}deleteCliente/${cliente}`);
+  Eliminar(documento: number) {
+    return this.http.delete(`${this.url}deleteCliente/${documento}`);
   }
 
   //editar
-  Actualizar(cliente: any, id: number) {
-    return this.http.put(`${this.url}/updateCliente/` + id, cliente);
+  Actualizar(cliente: any, documento: number) {
+    return this.http.put(`${this.url}/updateCliente/` + documento, cliente);
   }
 }

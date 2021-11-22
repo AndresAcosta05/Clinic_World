@@ -10,7 +10,7 @@ import { ClientesService } from 'src/app/services/clientes.service';
 export class ContactenosComponent implements OnInit {
 
   //variables a usar
-  idCliente: number;
+  documento: any;
   listaClientes: any;
   formClientes: FormGroup;
   nuevoCliente = {
@@ -63,17 +63,16 @@ export class ContactenosComponent implements OnInit {
   }
 
   actualizarCliente(cliente: any) {
-    console.log(this.idCliente);
-    this.clientes.Actualizar(cliente, this.idCliente).subscribe(() => {
+    this.clientes.Actualizar(cliente, this.documento).subscribe(() => {
       this.generadorAlerta('info', 'Registro Actualizado Correctamente');
       this.formClientes.reset();
       this.consultarClientes();
     });
   }
 
-  eliminarCliente(id: number, nombre, apellido) {
+  eliminarCliente(documento: number, nombre, apellido) {
     if (window.confirm(`Desea Eliminar a ${nombre} ${apellido}?`)) {
-      this.clientes.Eliminar(id).subscribe(() => {
+      this.clientes.Eliminar(documento).subscribe(() => {
         this.generadorAlerta('warning', 'Registro Eliminado Correctamente');
         this.formClientes.reset();
         this.consultarClientes();
@@ -82,7 +81,7 @@ export class ContactenosComponent implements OnInit {
   }
 
   seleccionarCliente(cliente: any) {
-    this.idCliente = cliente.idCliente;
+    this.documento = cliente.numero_documento;
     this.formClientes.setValue({
       tipo_documento: cliente.tipo_documento,
       numero_documento: cliente.numero_documento,
