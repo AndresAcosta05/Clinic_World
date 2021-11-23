@@ -21,13 +21,13 @@ export class CitasService {
   }
 
   //editar
-  Actualizar(cita: any, id: number) {
-    return this.http.put(`${this.url}/updateCitas/` + id, cita);
+  Actualizar(cita: any, codigo: any) {
+    return this.http.put(`${this.url}/updateCitas/` + codigo, cita);
   }
 
    //eliminar
-   Eliminar(cita: number) {
-    return this.http.delete(`${this.url}deleteCitas/${cita}`);
+   Eliminar(codigo: any) {
+    return this.http.delete(`${this.url}deleteCitas/${codigo}`);
   }
 
 }

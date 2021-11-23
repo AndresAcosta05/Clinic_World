@@ -21,12 +21,12 @@ export class MedicosService {
   }
  
   //eliminar
-  baja(usuario:number) {
-    return this.http.delete(`${this.url}deleteUsuarios/${usuario}`);
+  baja(documento:number) {
+    return this.http.delete(`${this.url}deleteUsuarios/${documento}`);
   }
 
    //editar
-  modificacion(usuario:any, id:number) {
-    return this.http.put(`${this.url}/updateUsuarios/`+id, usuario);    
+  modificacion(usuario:any, documento:number) {
+    return this.http.put(`${this.url}/updateUsuarios/`+documento, usuario);    
   } 
 }

@@ -214,8 +214,8 @@ def addusuarios():
 
 ######### ruta para actualizar################
 @cross_origin()
-@app.route('/updateUsuarios/<id>', methods=['PUT'])
-def updateUsuarios(id):
+@app.route('/updateUsuarios/<documento>', methods=['PUT'])
+def updateUsuarios(documento):
         tipo_documento = request.json['tipo_documento'] 
         numero_documento = request.json['numero_documento']        
         edad = request.json['edad']  
@@ -245,9 +245,9 @@ def updateUsuarios(id):
                 idTipo_usuario = %s,
                 usuario = %s,
                 contraseña = %s
-            WHERE idUsuario = %s
+            WHERE numero_documento = %s
         """, ( tipo_documento, numero_documento, edad, nombre, segundo_nombre, apellido, segundo_apellido, 
-                direccion, correo, telefono, tipo_usuario, usuario, contraseña, id))
+                direccion, correo, telefono, tipo_usuario, usuario, contraseña, documento))
         mysql.connection.commit()
         return jsonify({"informacion":"Registro actualizado"})
 
@@ -255,10 +255,10 @@ def updateUsuarios(id):
 
 ######### ruta para eliminar################
 @cross_origin()
-@app.route('/deleteUsuarios/<id>', methods = ['DELETE'])
-def deleteUsuarios(id):
+@app.route('/deleteUsuarios/<documento>', methods = ['DELETE'])
+def deleteUsuarios(documento):
     con = mysql.connection.cursor()
-    con.execute('DELETE FROM usuarios WHERE idUsuario = %s', (id))
+    con.execute("DELETE FROM usuarios WHERE numero_documento = %s" %documento)
     mysql.connection.commit()
     return jsonify({"informacion":"Registro eliminado"})
 
@@ -602,7 +602,7 @@ def deleteEsp_medico(id):
 @app.route('/getAllCitas', methods=['GET'])
 def getAllCitas():
     con = mysql.connection.cursor()
-    con.execute('SELECT citas.idCitas, concat(clientes.nombre, " " ,clientes.apellido) as cliente_nombre, concat(usuarios.nombre, " " ,usuarios.apellido) as medico_nombre, citas.fecha_hora, citas.idCliente, citas.idEspecialidad_medico, especialidad.nombre '
+    con.execute('SELECT citas.idCitas, concat(clientes.nombre, " " ,clientes.apellido) as cliente_nombre, concat(usuarios.nombre, " " ,usuarios.apellido) as medico_nombre, citas.fecha_hora, citas.idCliente, citas.idEspecialidad_medico, especialidad.nombre, citas.codigo_cita '
     +'FROM citas, usuarios, especialidad, clientes, especialidad_medico '
     +'WHERE citas.idCliente = clientes.idCliente AND citas.idEspecialidad_medico = especialidad_medico.idEspecialidad_medico AND especialidad_medico.idUsuario = usuarios.idUsuario '
     +'AND especialidad_medico.idEspecialidad = especialidad.idEspecialidad')
@@ -621,7 +621,8 @@ def getAllCitas():
                 'fecha': result[3],
                 'idCliente': result[4],
                 'idEsp_Medico': result[5],
-                'especialidad': result[6]
+                'especialidad': result[6],
+                'codigo': result[7]
             }
             payload.append(content)
             content = {}
@@ -665,7 +666,12 @@ def addCitas():
         fecha_hora = request.json['fecha_hora'],
         idEspecialidad_medico = request.json['idEspecialidad_medico']
         con = mysql.connection.cursor()
-        con.execute("INSERT INTO citas(idCliente, fecha_hora, idEspecialidad_medico) VALUES (%s, %s, %s)", (idCliente, fecha_hora, idEspecialidad_medico))
+        #CREAMOS ESTA CONSULTA PARA TRAER EL ULTIMO ID PARA LA LLAVE UNICA
+        con.execute('SELECT CONCAT( "CIT", MAX(LAST_INSERT_ID(idCitas)) +1) FROM citas')
+        res = con.fetchall()
+        #INSERCION FINAL
+        con.execute('INSERT INTO citas(idCliente, fecha_hora, idEspecialidad_medico, codigo_cita) VALUES(%s, %s, %s, %s);',
+        (idCliente, fecha_hora, idEspecialidad_medico, res[0][0]) )
         mysql.connection.commit()
         return jsonify({"informacion" : "Dato Insertado Correctamente"})
 
@@ -673,8 +679,9 @@ def addCitas():
 
 #QUERY DE ACTUALIZACION
 @cross_origin()
-@app.route('/updateCitas/<id>', methods=['PUT'])
-def updateCitas(id):
+@app.route('/updateCitas/<codigo>', methods=['PUT'])
+def updateCitas(codigo):
+    print(codigo)
     idCliente = request.json['idCliente'],
     fecha_hora = request.json['fecha_hora']
     idEspecialidad_medico = request.json['idEspecialidad_medico']
@@ -684,8 +691,8 @@ def updateCitas(id):
         SET idCliente = %s,
             fecha_hora = %s,
             idEspecialidad_medico = %s
-        WHERE idCitas = %s
-    """, (idCliente, fecha_hora, idEspecialidad_medico, id))
+        WHERE codigo_cita = %s
+    """, (idCliente, fecha_hora, idEspecialidad_medico, codigo))
     mysql.connection.commit()
     return jsonify({"informacion":"Registro actualizado"})
 
@@ -693,10 +700,11 @@ def updateCitas(id):
 
 #QUERY PARA ELIMINAR
 @cross_origin()
-@app.route('/deleteCitas/<id>', methods = ['DELETE'])
-def deleteCitas(id):
+@app.route('/deleteCitas/<codigo>', methods = ['DELETE'])
+def deleteCitas(codigo):
+    print('codigo es: ', codigo)
     cur = mysql.connection.cursor()
-    cur.execute('DELETE FROM citas WHERE idCitas = %s', (id))
+    cur.execute("DELETE FROM citas WHERE codigo_cita = '%s'" %codigo)
     mysql.connection.commit()
     return jsonify({"informacion":"Registro eliminado"})
 

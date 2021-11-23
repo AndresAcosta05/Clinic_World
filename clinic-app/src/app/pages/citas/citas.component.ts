@@ -15,7 +15,7 @@ export class CitasComponent implements OnInit {
   listaClientes: any;
   listaEsp_medicos: any;
   formCitas: FormGroup;
-  idCita: number;
+  codigo: any;
   nuevaCita = {
     idCliente: '',
     idEspecialidad_medico: '',
@@ -67,16 +67,15 @@ export class CitasComponent implements OnInit {
   }
 
   actualizarcita(cita: any) {
-    console.log(this.idCita);
-    this.citasService.Actualizar(cita, this.idCita).subscribe(() => {
+    this.citasService.Actualizar(cita, this.codigo).subscribe(() => {
       this.formCitas.reset();
       this.consultarCitas();
     });
   }
 
-  eliminarCita(id: number) {
-    if (window.confirm(`Desea Eliminar la cita ${id}?`)) {
-      this.citasService.Eliminar(id).subscribe(() => {
+  eliminarCita(codigo: any) {
+    if (window.confirm(`Desea Eliminar la cita ${codigo}?`)) {
+      this.citasService.Eliminar(codigo).subscribe(() => {
         this.formCitas.reset();
         this.consultarCitas();
       });
@@ -84,7 +83,7 @@ export class CitasComponent implements OnInit {
   }
   
   seleccionarCita(cita: any) {
-    this.idCita = cita.idCitas;
+    this.codigo = cita.codigo;
     this.formCitas.setValue({
       idCliente: cita.idCliente,
       idEspecialidad_medico: cita.idEsp_Medico,

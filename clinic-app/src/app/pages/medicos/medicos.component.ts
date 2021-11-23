@@ -10,9 +10,13 @@ import { TipoUsuarioService } from 'src/app/services/tipo-usuario.service';
 export class MedicosComponent implements OnInit {
 
   myform: FormGroup
-  id_editar: number = 0;
+  documento: number = 0;
 
-  constructor(private _builder: FormBuilder, private medico: MedicosService, private tipoUsuario: TipoUsuarioService) {
+  constructor(
+    private _builder: FormBuilder,
+    private medico: MedicosService,
+    private tipoUsuario: TipoUsuarioService
+  ) {
     this.myform = this._builder.group({
       tipo_documento: ['', [Validators.required, Validators.minLength(10)]],
       numero_documento: ['', [Validators.required, Validators.minLength(100)]],
@@ -88,10 +92,9 @@ export class MedicosComponent implements OnInit {
   }
   // este metodo obtiene el id del contacto a eliminar
   // llama el metodo baja del servicio  baja=delete/<id>
-  baja(id: number) {
-    if (window.confirm("Esta seguro de eliminar el registro Numero " + id + " ?")) {
-      this.medico.baja(id).subscribe(datos => {
-        console.log(datos)
+  baja(documento: number) {
+    if (window.confirm("Esta seguro de eliminar el registro Numero " + documento + " ?")) {
+      this.medico.baja(documento).subscribe(datos => {
         alert("Medico eliminado ")
         this.myform.reset()
         this.recuperarTodos()
@@ -118,9 +121,8 @@ export class MedicosComponent implements OnInit {
       contraseña: value.contraseña,
       idTipo_usuario: value.idTipo_usuario
     }
-    
-    this.medico.modificacion(this.nuevocon, this.id_editar).subscribe(datos => {
-      console.log(datos)
+
+    this.medico.modificacion(this.nuevocon, this.documento).subscribe(datos => {
       alert("medico editado ")
       this.myform.reset()
       this.recuperarTodos()
@@ -131,7 +133,7 @@ export class MedicosComponent implements OnInit {
 
   //este metodo carga los datos de la fila al formulario
   seleccionar(con_edi: any) {
-    this.id_editar = con_edi['idUsuario'];
+    this.documento = con_edi.numero_documento;
     this.myform.setValue({
       tipo_documento: con_edi['tipo_documento'],
       numero_documento: con_edi['numero_documento'],
