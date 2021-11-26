@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class EspecialidadMedicosService {
 
-  url = 'http://127.0.0.1:3000/'; // disponer url de su servidor que tiene las páginas PHP
+  url = 'https://clinicworld.pythonanywhere.com/'; // disponer url de su servidor que tiene las páginas PHP
 
   constructor(private http: HttpClient) { }
   //obtener todos
